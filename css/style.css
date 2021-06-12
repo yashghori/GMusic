@@ -232,8 +232,8 @@ body {
 }
 .music_list ul {
   margin: 10px 0;
-  /* max-height: 260px; */
-  max-height: 486px;
+  max-height: 260px;
+  /* max-height: 486px; */
   overflow-y: auto;
 }
 
@@ -283,5 +283,7 @@ input[type=text] {
   border-bottom: 2px solid #acc7dc;
   outline: none;
   color: var(--pink);
+  background: transparent;
+
 }
 
