@@ -269,11 +269,7 @@ function filter(e) {
         // console.log(item);
         if (item.toLocaleLowerCase().indexOf(text) !== -1) {
             task.parentElement.parentElement.style.display = 'block';
-            // console.log(item.toLocaleLowerCase().indexOf(text));
-            document.querySelector("li").style.display = 'block';
         } else {
-            
-            // document.querySelector("li").style.display = 'none';
             task.parentElement.parentElement.style.display = 'none';
         }
     });
