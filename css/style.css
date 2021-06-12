@@ -38,7 +38,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url("back.svg") no-repeat center center/cover;
+  background: url("/back.svg") no-repeat center center/cover;
 
 }
 .box {
@@ -190,10 +190,9 @@ body {
 }
 .music_list {
 
-
   position: absolute;
   left: 0;
-  bottom: -55%;
+  bottom: -60%;
   opacity: 0;
   padding: 15px 30px;
   pointer-events: none;
@@ -202,7 +201,6 @@ body {
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.15);
   width: 100%;
   transition: all 0.15s ease-out;
-
   background: rgba( 255, 255, 255, 0.70 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 4.0px );
@@ -234,7 +232,8 @@ body {
 }
 .music_list ul {
   margin: 10px 0;
-  max-height: 260px;
+  /* max-height: 260px; */
+  max-height: 486px;
   overflow-y: auto;
 }
 
@@ -272,3 +271,17 @@ ul li.playing {
     box-shadow: none;
 }
 }
+
+
+/* searchbar  */
+input[type=text] {
+  width: 50%;
+  text-align : center;
+  padding: 6px 20px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #acc7dc;
+  outline: none;
+  color: var(--pink);
+}
+

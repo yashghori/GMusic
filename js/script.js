@@ -13,7 +13,8 @@ const wrapper = document.querySelector(".box"),
     hideMoreBtn = musicList.querySelector("#close"),
     ulTag = wrapper.querySelector("ul"),
     api = "https://gmusicflaskapi.herokuapp.com/",
-    musicPaths = "https://siasky.net/";
+    musicPaths = "https://siasky.net/",
+    Filter = document.querySelector('#filter');
 
 //  Fetch APi
 let allMusic = [];
@@ -30,7 +31,6 @@ async function apiFetchFunc() {
 // calling load music function once window load 
 window.addEventListener("load", () => {
     apiFetchFunc().then((result) => {
-        console.log(result);
         allMusic = result;
         musicIndex = Math.round((Math.random() * allMusic.length) + 1);
         // be safe .... below codw will blow your mind
@@ -257,4 +257,24 @@ function clicked(element) {
     loadMusic(musicIndex)
     playMusic();
     playingNow();
+}
+
+// Filter  music
+Filter.addEventListener('keyup', filter);
+
+function filter(e) {
+    let text = e.target.value.toLowerCase();
+    document.querySelectorAll('li div span').forEach((task) => {
+        let item = task.firstChild.textContent;
+        // console.log(item);
+        if (item.toLocaleLowerCase().indexOf(text) !== -1) {
+            task.parentElement.parentElement.style.display = 'block';
+            // console.log(item.toLocaleLowerCase().indexOf(text));
+            document.querySelector("li").style.display = 'block';
+        } else {
+            
+            // document.querySelector("li").style.display = 'none';
+            task.parentElement.parentElement.style.display = 'none';
+        }
+    });
 }
