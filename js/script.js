@@ -268,7 +268,7 @@ function filter(e) {
         let item = task.firstChild.textContent;
         // console.log(item);
         if (item.toLocaleLowerCase().indexOf(text) !== -1) {
-            task.parentElement.parentElement.style.display = 'block';
+            task.parentElement.parentElement.style.display = 'flex';
         } else {
             task.parentElement.parentElement.style.display = 'none';
         }
