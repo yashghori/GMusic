@@ -14,7 +14,12 @@ const wrapper = document.querySelector(".box"),
     ulTag = wrapper.querySelector("ul"),
     api = "https://gmusicflaskapi.herokuapp.com/",
     musicPaths = "https://siasky.net/",
-    Filter = document.querySelector('#filter');
+    Filter = document.querySelector('#filter'),
+    Audio = document.querySelector('audio'),
+    volume = document.getElementById('volume'),
+    volume_mute = document.getElementById('volume_mute'),
+    volume_down = document.getElementById('volume_down'),
+    volume_up = document.getElementById('volume_up');
 
 //  Fetch APi
 let allMusic = [];
@@ -274,3 +279,27 @@ function filter(e) {
         }
     });
 }
+
+// custom music control
+volume.addEventListener('change',(e)=>{
+    Audio.volume = e.currentTarget.value / 100;
+    if (Audio.volume === 0) {
+        volume_mute.style.display = 'flex';
+        volume_down.style.display = 'none';
+        volume_up.style.display = 'none';
+    } else if((Audio.volume <= 0.5)){
+        volume_mute.style.display = 'none';
+        volume_down.style.display = 'flex';
+        volume_up.style.display = 'none';
+    }else{
+        volume_mute.style.display = 'none';
+        volume_down.style.display = 'none';
+        volume_up.style.display = 'flex';
+    }
+});
+
+// Volume bar
+document.getElementById("volume").oninput = function() {
+    var value = (this.value-this.min)/(this.max-this.min)*100
+    this.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
+  };

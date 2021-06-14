@@ -56,6 +56,15 @@
             <i id="next" class="material-icons">skip_next</i>
             <i id="more_music" class="material-icons">queue_music</i>
         </div>
+
+        <div class="container">
+            <i id="volume_mute" class="material-icons">volume_mute</i>
+            <i id="volume_down" class="material-icons volume">volume_down</i>
+            <i id="volume_up" class="material-icons volume">volume_up</i>
+            <input id="volume" min="0" max="60" type="range" value="30" />
+        </div>
+
+
         <!-- music list -->
         <div class="music_list">
             <div class="header">
@@ -64,7 +73,7 @@
                     <span>Music list</span>
                 </div>
 
-                <input placeholder='Search music'type="text" name="filter" id="filter" value="">
+                <input placeholder='Search music' type="text" name="filter" id="filter" value="">
 
 
                 <i id="close" class="material-icons">close</i>
