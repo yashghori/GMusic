@@ -294,3 +294,20 @@ document.getElementById("volume").oninput = function () {
         volume_down.innerText = 'volume_up';
     }
 };
+
+volume_down.addEventListener('click',()=>{
+    let value = (this.value - this.min) / (this.max - this.min) * 100;
+    value = 0;
+    if (volume_down.innerText !== 'music_off') {
+        
+        Audio.volume = value / 100;
+        volume_down.innerText = 'music_off';
+    }else{
+        Audio.volume = 0.5;
+        volume_down.innerText = 'volume_down';
+        console.log(Audio.volume); 
+    }
+
+    
+});
+
