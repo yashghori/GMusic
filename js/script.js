@@ -17,9 +17,7 @@ const wrapper = document.querySelector(".box"),
     Filter = document.querySelector('#filter'),
     Audio = document.querySelector('audio'),
     volume = document.getElementById('volume'),
-    volume_mute = document.getElementById('volume_mute'),
-    volume_down = document.getElementById('volume_down'),
-    volume_up = document.getElementById('volume_up');
+    volume_down = document.getElementById('volume_down');
 
 //  Fetch APi
 let allMusic = [];
@@ -284,17 +282,11 @@ function filter(e) {
 volume.addEventListener('change',(e)=>{
     Audio.volume = e.currentTarget.value / 100;
     if (Audio.volume === 0) {
-        volume_mute.style.display = 'flex';
-        volume_down.style.display = 'none';
-        volume_up.style.display = 'none';
-    } else if((Audio.volume <= 0.5)){
-        volume_mute.style.display = 'none';
-        volume_down.style.display = 'flex';
-        volume_up.style.display = 'none';
+        volume_down.innerText = 'volume_mute';
+    }else if(Audio.volume <= 0.5) {
+        volume_down.innerText = 'volume_down';
     }else{
-        volume_mute.style.display = 'none';
-        volume_down.style.display = 'none';
-        volume_up.style.display = 'flex';
+        volume_down.innerText = 'volume_up';
     }
 });
 

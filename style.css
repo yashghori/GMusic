@@ -297,12 +297,7 @@ input[type="text"] {
   justify-content: center;
   margin-top: 12px;
 }
-#volume_mute {
-  display: none;
-}
-#volume_down {
-  display: none;
-}
+
 /* for chrome */
 #volume {
   background: linear-gradient(to right, var(--pink) 0%, var(--violet) 50%, rgb(224, 222, 222) 50%);
