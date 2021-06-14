@@ -278,20 +278,34 @@ function filter(e) {
     });
 }
 
-// custom music control
-volume.addEventListener('change',(e)=>{
-    Audio.volume = e.currentTarget.value / 100;
-    if (Audio.volume === 0) {
+// Volume bar
+document.getElementById("volume").oninput = function () {
+    let value = (this.value - this.min) / (this.max - this.min) * 100;
+
+
+    this.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
+
+    Audio.volume = value / 100;
+    if (value === 0) {
         volume_down.innerText = 'volume_mute';
-    }else if(Audio.volume <= 0.5) {
+    } else if (value <= 70) {
         volume_down.innerText = 'volume_down';
-    }else{
+    } else {
         volume_down.innerText = 'volume_up';
     }
-});
+};
 
-// Volume bar
-document.getElementById("volume").oninput = function() {
-    var value = (this.value-this.min)/(this.max-this.min)*100
-    this.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
-  };
+volume_down.addEventListener('click',()=>{
+    let value = (this.value - this.min) / (this.max - this.min) * 100;
+    value = 0;
+    if (volume_down.innerText !== 'music_off') {
+        Audio.volume = value / 100;
+        volume_down.innerText = 'music_off';
+    }else{
+        Audio.volume = 0.5;
+        volume_down.innerText = 'volume_down';
+        console.log(Audio.volume); 
+    }
+
+    
+});
