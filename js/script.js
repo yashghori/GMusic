@@ -19,6 +19,8 @@ const wrapper = document.querySelector(".box"),
     volume = document.getElementById('volume'),
     volume_down = document.getElementById('volume_down');
 
+
+
 //  Fetch APi
 let allMusic = [];
 let musicIndex = 0;
@@ -278,11 +280,14 @@ function filter(e) {
     });
 }
 
+
 // Volume bar
+sessionStorage.setItem('vol', 50)
+
 document.getElementById("volume").oninput = function () {
     let value = (this.value - this.min) / (this.max - this.min) * 100;
 
-
+    sessionStorage.setItem('vol', value)
     this.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
 
     Audio.volume = value / 100;
@@ -292,22 +297,29 @@ document.getElementById("volume").oninput = function () {
         volume_down.innerText = 'volume_down';
     } else {
         volume_down.innerText = 'volume_up';
-    }
+    }    
 };
 
 volume_down.addEventListener('click',()=>{
-    let value = (this.value - this.min) / (this.max - this.min) * 100;
-    value = 0;
+    
     if (volume_down.innerText !== 'music_off') {
-        
+        volume.value = 0;
+        value = 0;
         Audio.volume = value / 100;
         volume_down.innerText = 'music_off';
+        volume.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
+        
     }else{
-        Audio.volume = 0.5;
-        volume_down.innerText = 'volume_down';
-        console.log(Audio.volume); 
+        value = sessionStorage.getItem('vol')
+        Audio.volume = value/100;
+        if (value === 0) {
+            volume_down.innerText = 'volume_mute';
+        } else if (value <= 70) {
+            volume_down.innerText = 'volume_down';
+        } else {
+            volume_down.innerText = 'volume_up';
+        } 
+        volume.value = value;
+        volume.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
     }
-
-    
 });
-
