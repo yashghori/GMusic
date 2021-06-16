@@ -297,29 +297,56 @@ document.getElementById("volume").oninput = function () {
         volume_down.innerText = 'volume_down';
     } else {
         volume_down.innerText = 'volume_up';
-    }    
+    }
 };
 
-volume_down.addEventListener('click',()=>{
-    
+volume_down.addEventListener('click', () => {
+
     if (volume_down.innerText !== 'music_off') {
         volume.value = 0;
         value = 0;
         Audio.volume = value / 100;
         volume_down.innerText = 'music_off';
         volume.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
-        
-    }else{
+
+    } else {
         value = sessionStorage.getItem('vol')
-        Audio.volume = value/100;
+        Audio.volume = value / 100;
         if (value === 0) {
             volume_down.innerText = 'volume_mute';
         } else if (value <= 70) {
             volume_down.innerText = 'volume_down';
         } else {
             volume_down.innerText = 'volume_up';
-        } 
+        }
         volume.value = value;
         volume.style.background = 'linear-gradient(to right, var(--pink) 0%, var(--violet) ' + value + '%, rgb(224, 222, 222) ' + value + '%, rgb(224, 222, 222) 100%)'
+    }
+});
+
+// music control by key board
+document.addEventListener('keydown', function (e) {
+    switch (e.keyCode) {
+        case 37:
+            // left arrow
+            prevMusic();
+            break;
+        case 39:
+            // right arrow
+            nextMusic();
+            break;
+        case 38:
+            // alert('up');
+            break;
+        case 40:
+            // alert('down');
+            break;
+        case 32:
+            // space bar
+            const isMusicPause = wrapper.classList.contains("paused");
+            // if isMusicPause true call pauseMusic else ...
+            isMusicPause ? pauseMusic() : playMusic();
+            playingNow()
+            break;
     }
 });
