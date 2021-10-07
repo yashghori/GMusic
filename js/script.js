@@ -18,7 +18,15 @@ const wrapper = document.querySelector(".box"),
     Audio = document.querySelector('audio'),
     volume = document.getElementById('volume'),
     volume_down = document.getElementById('volume_down'),
-    likeButton = document.querySelector('.likeButton');
+    likeButton = document.querySelector('.likeButton'),
+    songImage = document.querySelector('.songImage'),
+    loadindEffect = document.querySelector('.loadingEffect');
+
+
+// Loading Effect
+songImage.onload = (e) => {
+    loadindEffect.style.display = 'none';
+}
 
 // Like Logic
 
