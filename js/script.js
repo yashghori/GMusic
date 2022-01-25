@@ -335,12 +335,6 @@ document.addEventListener('keydown', function (e) {
             // right arrow
             nextMusic();
             break;
-        case 38:
-            // alert('up');
-            break;
-        case 40:
-            // alert('down');
-            break;
         case 32:
             // space bar
             const isMusicPause = wrapper.classList.contains("paused");
