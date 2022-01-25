@@ -17,8 +17,35 @@ const wrapper = document.querySelector(".box"),
     Filter = document.querySelector('#filter'),
     Audio = document.querySelector('audio'),
     volume = document.getElementById('volume'),
-    volume_down = document.getElementById('volume_down');
+    volume_down = document.getElementById('volume_down'),
+    likeButton = document.querySelector('.likeButton'),
+    songImage = document.querySelector('.songImage'),
+    loadindEffect = document.querySelector('.loadingEffect');
 
+
+// Loading Effect
+songImage.onload = (e) => {
+    loadindEffect.style.display = 'none';
+}
+
+// Like Logic
+
+function sendLike(isLike) {
+    console.log(isLike);
+    
+}
+likeButton.addEventListener('click', function() {
+			
+	if(likeButton.innerText !="favorite"){
+				
+		likeButton.innerText ="favorite";
+        sendLike(1)
+	}else{		
+        likeButton.innerText ="favorite_border";
+        sendLike(0)
+	}
+
+})
 
 
 //  Fetch APi
@@ -344,3 +371,4 @@ document.addEventListener('keydown', function (e) {
             break;
     }
 });
+
